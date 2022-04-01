@@ -58,8 +58,11 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        //update pasiima visus request kintamuosius kurie tinka produktui
-        $product->update($request->all());
+        $product->name = $request->name;
+        $product->description = $request->description;
+
+        $product->save();
+        
         return response()->json('Product edited');
     }
 
